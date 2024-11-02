@@ -10,9 +10,9 @@
 # ========================================= #
 #          OmniPose on COCO Dataset
 # ========================================= #
-# CFG='experiments/coco/omnipose_w48_128x96.yaml'
+CFG='experiments/coco/omnipose_w48_128x96.yaml'
 # CFG='experiments/coco/omnipose_w48_256x192.yaml'
-CFG='experiments/coco/omnipose_w48_384x288.yaml'
+# CFG='experiments/coco/omnipose_w48_384x288.yaml'
 
 # ========================================= #
 #            HRnet on MPII Dataset
@@ -27,9 +27,9 @@ CFG='experiments/coco/omnipose_w48_384x288.yaml'
 # CFG='experiments/coco/hrnet_w48_384x288.yaml'
 
 OPTS=None
-MODELDIR=''
-LOGDIR=''
-DATADIR=''
+MODELDIR='/workspace/models'
+LOGDIR='/workspace/logs'
+DATADIR='/workspace/cuddly-octo-giggle/OmniPose/data'
 PREVMODELDIR=''
 
 python train.py \
