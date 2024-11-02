@@ -1,8 +1,0 @@
-tensorboardX
-opencv-python
-matplotlib
-yacs
-tqdm
-json-tricks
-scipy
-pycocotools
