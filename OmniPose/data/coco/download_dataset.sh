@@ -12,4 +12,7 @@ mkdir -p images &&
 
 unzip -q annotations_trainval2017.zip -d annotations &&
 
+mv train2017.zip images/ &&
+mv val2017.zip images/ &&
+
 echo "Downloaded COCO 2017 dataset"
