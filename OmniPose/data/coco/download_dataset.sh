@@ -10,7 +10,7 @@ curl -O -q http://images.cocodataset.org/annotations/annotations_trainval2017.zi
 mkdir -p annotations &&
 mkdir -p images &&
 
-unzip -q annotations_trainval2017.zip -d annotations &&
+unzip -q annotations_trainval2017.zip &&
 
 mv train2017.zip images/ &&
 mv val2017.zip images/ &&
