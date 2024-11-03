@@ -162,3 +162,5 @@ cython_debug/
 #.idea/
 
 OmniPose/.git/
+main/test/yolo11n-pose.pt
+main/test/yolo11x-pose.pt
