@@ -1,0 +1,3 @@
+1. Lei Wang., Xiuyuan Yuan., Tom Gedeon., Liang Zheng. (2024). Taylor Videos for Action Recognition. ArXiv, abs/2402.03019v4. https://doi.org/10.48550/arXiv.2402.03019
+2. Qin, Z., Liu, Y., Ji, P., Kim, D., Wang, L., McKay, R. I., Anwar, S., & Gedeon, T. (2024b). Fusing higher-order features in graph neural networks for skeleton-based action recognition. IEEE Transactions on Neural Networks and Learning Systems, 35(4), 4783–4797. https://doi.org/10.1109/tnnls.2022.3201518 
+3. Wang, L., Liu, J., Zheng, L., Gedeon, T., & Koniusz, P. (2024). Meet Jeanie: A similarity measure for 3D skeleton sequences via temporal-viewpoint alignment. International Journal of Computer Vision, 132(9), 4091–4122. https://doi.org/10.1007/s11263-024-02070-2 
