@@ -42,8 +42,6 @@
 - Unsupervised feature coding and dictionary learning
 - MAML-inspired fusion of supervised and unsupervised learning
 
-The key innovation is the introduction of higher-order angular features that capture relative motions between body parts while maintaining invariance to different body sizes. This helps distinguish between actions with similar motion trajectories.
-
 ## Meet JEANIE: A Similarity Measure for 3D Skeleton Sequences via Temporal-Viewpoint Alignment
 
 解決時序和視角不一致問題的新技術:
