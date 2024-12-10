@@ -12,6 +12,38 @@
 
 - 來源: [Higher-Order Features in Graph Neural Networks](https://doi.org/gt6h5g)
 
+1. Angular Encoding (AGE):
+
+- Third-order features measuring angles between three body joints
+- Static angular encoding captures spatial relationships
+- Velocity angular encoding captures temporal dynamics
+- Four categories of angles: local, center-oriented, pair-based, and finger-based
+
+2. Network Architecture:
+
+- Backbone with three spatial-temporal blocks (STBs)
+- Each STB contains:
+  - Spatial Multiscale Graph Convolution (SMGC) unit
+  - Temporal Multiscale Convolution (TMC) units
+- Uses S2GC (Simple Spectral Graph Convolution) as default GNN
+
+3. Feature Fusion:
+
+- Combines joint coordinates (first-order)
+- Bone vectors (second-order) 
+- Angular features (third/fourth-order)
+- Two fusion strategies:
+  - Direct concatenation
+  - Model ensembling
+
+4. Training Approach:
+
+- Supervised learning with cross-entropy loss
+- Unsupervised feature coding and dictionary learning
+- MAML-inspired fusion of supervised and unsupervised learning
+
+The key innovation is the introduction of higher-order angular features that capture relative motions between body parts while maintaining invariance to different body sizes. This helps distinguish between actions with similar motion trajectories.
+
 ## Meet JEANIE: A Similarity Measure for 3D Skeleton Sequences via Temporal-Viewpoint Alignment
 
 解決時序和視角不一致問題的新技術:
