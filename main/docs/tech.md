@@ -20,3 +20,34 @@
 - 優化少樣本動作識別
 - 提升兒童運動影像分析準確度
 - 來源: [JEANIE: 3D Skeleton Sequence Similarity](https://doi.org/gt483p)
+
+1. Core Components:
+
+- Temporal-viewpoint alignment using soft-DTW to match query-support sequence pairs
+- Camera viewpoint simulation using either Euler angles or stereo projections
+- Graph Neural Network (primarily S2GC) with optional transformer for feature encoding
+- Dictionary learning and feature coding for unsupervised learning
+
+2. Network Architecture:
+
+- 3-layer MLP for temporal block encoding
+- GNN backbone (S2GC, APPNP, SGC or GCN)
+- Optional transformer block for capturing dependencies
+- Final FC layer for feature extraction
+
+3. Learning Approaches:
+
+- Supervised FSAR with similarity-based loss function
+- Unsupervised FSAR using dictionary learning
+- Fusion strategies:
+  - MAML-inspired fusion of supervised/unsupervised losses
+  - Feature alignment between supervised/unsupervised representations
+  - Weighted score fusion
+  - Finetuning unsupervised model with supervised loss
+
+4. Key Technical Innovations:
+
+- Joint optimization of temporal and viewpoint alignments
+- Smooth viewpoint warping with controlled maximum shift
+- Local temporal block matching with neighboring views
+- Differentiable soft minimum for optimal path selection
