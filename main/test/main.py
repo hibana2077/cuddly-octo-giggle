@@ -20,11 +20,11 @@ connections = [
 model = YOLO('yolo11x-pose.pt')
 
 # 讀取圖片並進行預測
-img_path = './test5.png'
+img_path = './test2.png'
 results = model(img_path)
 
 # 讀取圖片
-img = cv2.imread('./test5.png')
+img = cv2.imread(img_path)
 
 # 轉換顏色 (因為 OpenCV 讀取 BGR 格式)
 # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -32,6 +32,7 @@ img = cv2.imread('./test5.png')
 # 遍歷每個偵測結果，取得關鍵點並繪製骨架
 for result in results:
     keypoints = result.keypoints.xy.cpu().numpy()  # 取得所有關鍵點座標
+    print(keypoints.shape)
     
     # 遍歷每個偵測到的物體（例如多個人物）
     for person_keypoints in keypoints:
@@ -53,3 +54,6 @@ for result in results:
 cv2.imshow('Image with Skeletons', img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
+# 儲存結果
+cv2.imwrite('./result.png', img)
