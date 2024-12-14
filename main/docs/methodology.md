@@ -35,7 +35,6 @@ Coordination is assessed via the standing long jump test, where children perform
 
 - Joint angle deviation.
 - Motion smoothness (measured using jerk minimization techniques).
-- System accuracy compared to annotated templates.
 - **Movement Stability Index (MSI):** Quantifies the stability of joint movements by analyzing the trajectory variance and body center-of-mass deviation during mimicry tasks.
 
 ### Experiment 2: Coordination Assessment via Long Jump
