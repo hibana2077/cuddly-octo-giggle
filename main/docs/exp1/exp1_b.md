@@ -1,8 +1,44 @@
 **Methodology**
 
-In this study, a windowing approach was employed to evaluate the effects of varying temporal segment lengths (window sizes) on two biomechanical indicators: Motion Smoothness and Movement Stability Index (MSI). The Motion Smoothness metric, based on third-order derivatives of joint angles (jerk), was calculated to assess the temporal continuity and fluidity of movement. Simultaneously, the MSI, defined as the combination of joint trajectory variance and center-of-mass deviations, served as a proxy measure for overall movement stability.
+To investigate the effects of varying temporal segments on biomechanical indicators, two primary measures were employed: Motion Smoothness and the Movement Stability Index (MSI). The Motion Smoothness metric is derived from the concept of jerk minimization, while the MSI integrates both joint trajectory variance and center-of-mass (COM) deviation to provide a holistic view of dynamic stability.
 
-To explore the influence of window size, we implemented an incremental analysis where the last \( N \) frames of a simulated motion dataset were considered for both metrics. A range of window sizes (e.g., 5, 10, 20, 30, 50, 80, 100 frames) was tested. For each window size, Motion Smoothness and MSI values were computed, and their maximum and minimum values across all tested windows were identified. This approach allowed us to observe how increasing or decreasing the temporal scale might amplify or attenuate certain kinematic characteristics in the data.
+1. **Motion Smoothness Formula**:  
+   Motion smoothness is quantified based on the third derivative of joint angles over time, commonly referred to as jerk. Given a sequence of joint angles $$\theta_1, \theta_2, \ldots, \theta_N$$, we first compute the discrete third-order differences (jerk) as:  
+   $$
+   J_i = \theta_{i+3} - 3\theta_{i+2} + 3\theta_{i+1} - \theta_i
+   $$
+   for $$ i = 1, 2, \ldots, N-3 $$. The mean absolute jerk is then taken as an index of smoothness:  
+   $$
+   \text{Motion Smoothness} = \frac{1}{N-3} \sum_{i=1}^{N-3} |J_i|
+   $$
+   Lower values indicate smoother movements, as they imply reduced high-frequency variations in angular acceleration.
+
+2. **Movement Stability Index (MSI) Formula**:  
+   The MSI accounts for both the dispersion of joint trajectories and the positional stability of the COM. Consider a set of joint trajectories sampled at times $ t_1, t_2, \ldots, t_N $, where each frame contains $ M $ joints, each represented by a 2D coordinate $(x_{j}, y_{j})$ for $ j = 1, 2, \ldots, M $. We define:
+   - **Trajectory Variance**:  
+     Compute the variance in both $x$ and $y$ directions across all joints, then take their mean:  
+     $$
+     \sigma_{\text{traj}}^2 = \frac{ \text{Var}(\{x_j\}) + \text{Var}(\{y_j\}) }{2}
+     $$
+   - **Center-of-Mass (COM) Deviation**:  
+     Let $ \mathbf{c}_i = (c_{x,i}, c_{y,i}) $ be the COM at time $ t_i $, typically defined as the mean position of all joints at that frame:
+     $$
+     \mathbf{c}_i = \frac{1}{M}\sum_{j=1}^{M} (x_{j,i}, y_{j,i})
+     $$
+     The average COM deviation is calculated as the mean norm of the successive differences:
+     $$
+     d_{\text{COM}} = \frac{1}{N-1}\sum_{i=1}^{N-1} \|\mathbf{c}_{i+1} - \mathbf{c}_i\|
+     $$
+
+   The MSI is then given by:
+   $$
+   \text{MSI} = \sigma_{\text{traj}}^2 + d_{\text{COM}}
+   $$
+
+   Higher MSI values suggest greater instability, either due to a lack of spatial consistency in the joint trajectories or excessive COM movement.
+
+**Windowing Procedure**:
+To examine how these metrics vary with different temporal scales, the original angle and trajectory data were segmented using multiple window sizes. For each chosen window size, only the last $N$ frames (where $N$ is the window length) were extracted and analyzed, computing both metrics within that restricted temporal domain. By systematically varying $N$ (e.g., 5, 10, 20, 30, 50, 80, 100 frames), this approach revealed how short- vs. long-term movement behaviors influence the resultant smoothness and stability metrics.
 
 **Results**
 
