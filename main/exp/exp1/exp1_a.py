@@ -1,6 +1,7 @@
 from ultralytics import YOLO
 import numpy as np
 import cv2
+import matplotlib.pyplot as plt
 
 # 視訊模式處理
 window_size = 30  # 可根據需求調整視窗大小(幀數)
@@ -10,7 +11,7 @@ model = YOLO('yolo11x-pose.pt')
 
 # 設定圖片或視訊路徑
 # img_path = '../../test/test2.png'
-img_path = './new_test.mp4'
+img_path = './test_video.mp4'
 # is_video = False  # 設定是否為視訊模式
 is_video = True
 
@@ -64,6 +65,16 @@ def movement_stability_index(trajectories, center_of_mass):
     # 合併為穩定性指數
     return trajectory_var + com_deviation
 
+# 存儲觸發時的數據與圖片
+def save_frame_data(frame, frame_index, angle, smoothness, msi):
+    filename = f"./save/saved_frame_{frame_index}.png"
+    cv2.imwrite(filename, frame)
+    with open(f"./save/saved_frame_{frame_index}.txt", "w") as f:
+        f.write(f"Angle: {angle}\n")
+        f.write(f"Motion Smoothness: {smoothness}\n")
+        f.write(f"Movement Stability Index: {msi}\n")
+    print(f"Frame data saved: {filename}")
+
 # 圖片模式處理
 if not is_video:
     img = cv2.imread(img_path)
@@ -101,11 +112,16 @@ if not is_video:
 
 # 視訊模式處
 else:
+    # 設定冷卻間隔幀數
+    cooldown_frames = 30
+    last_saved_frame = -cooldown_frames
     cap = cv2.VideoCapture(img_path)
     angles = []  # 用於存儲每幀的角度
     trajectories = []  # 用於存儲關節的軌跡
     center_of_mass = []  # 用於存儲質心的軌跡 (假設質心為關節的平均值)
+    saved_frames = []  # 存儲已儲存的幀索引
 
+    frame_index = 0
     while cap.isOpened():
         ret, frame = cap.read()
         if not ret:
@@ -161,10 +177,30 @@ else:
             msi = movement_stability_index(np.array(trajectories), np.array(center_of_mass))
             print(f"Movement Stability Index (last {window_size} frames): {msi:.2f}")
 
+        # 觸發條件檢查
+        if smoothness is not None and msi is not None:
+            if (smoothness > 5.0 or msi > 10.0) and (frame_index - last_saved_frame >= cooldown_frames):
+                save_frame_data(frame, frame_index, angles[-1], smoothness, msi)
+                saved_frames.append(frame_index)
+                last_saved_frame = frame_index
+
         # 顯示結果
         cv2.imshow('Pose Detection', frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
+
+        frame_index += 1
+
+    # 繪製圖表
+    plt.figure(figsize=(10, 6))
+    plt.plot(range(len(angles)), angles, label="Joint Angles")
+    plt.title("Joint Angles Over Time")
+    plt.xlabel("Frame Index")
+    plt.ylabel("Angle (degrees)")
+    plt.legend()
+    plt.grid()
+    plt.savefig("joint_angles_plot.png")
+    plt.show()
 
     cap.release()
     cv2.destroyAllWindows()

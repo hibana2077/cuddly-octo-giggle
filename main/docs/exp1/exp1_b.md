@@ -3,11 +3,11 @@
 To investigate the effects of varying temporal segments on biomechanical indicators, two primary measures were employed: Motion Smoothness and the Movement Stability Index (MSI). The Motion Smoothness metric is derived from the concept of jerk minimization, while the MSI integrates both joint trajectory variance and center-of-mass (COM) deviation to provide a holistic view of dynamic stability.
 
 1. **Motion Smoothness Formula**:  
-   Motion smoothness is quantified based on the third derivative of joint angles over time, commonly referred to as jerk. Given a sequence of joint angles $$\theta_1, \theta_2, \ldots, \theta_N$$, we first compute the discrete third-order differences (jerk) as:  
+   Motion smoothness is quantified based on the third derivative of joint angles over time, commonly referred to as jerk. Given a sequence of joint angles $\theta_1, \theta_2, \ldots, \theta_N$, we first compute the discrete third-order differences (jerk) as:  
    $$
    J_i = \theta_{i+3} - 3\theta_{i+2} + 3\theta_{i+1} - \theta_i
    $$
-   for $$ i = 1, 2, \ldots, N-3 $$. The mean absolute jerk is then taken as an index of smoothness:  
+   for $ i = 1, 2, \ldots, N-3 $. The mean absolute jerk is then taken as an index of smoothness:  
    $$
    \text{Motion Smoothness} = \frac{1}{N-3} \sum_{i=1}^{N-3} |J_i|
    $$

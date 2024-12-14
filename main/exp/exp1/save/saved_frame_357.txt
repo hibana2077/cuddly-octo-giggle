@@ -1,0 +1,3 @@
+Angle: 171.16970825195312
+Motion Smoothness: 22.721986770629883
+Movement Stability Index: 15814.7587890625
