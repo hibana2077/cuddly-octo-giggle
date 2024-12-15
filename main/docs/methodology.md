@@ -52,10 +52,7 @@ Coordination is assessed via the standing long jump test, where children perform
 
 #### Existing Metrics:
 
-1. **Jump Distance Prediction Accuracy**: Measures the precision of predicted jump distances compared to actual distances, using mean absolute error (MAE) as a key indicator.
-2. **Take-off and Landing Balance Analysis**: Analyzes the stability of take-off and landing phases by evaluating center-of-mass trajectories and limb alignment.
-3. **Classification Precision for Coordination Levels**: Assesses the system's accuracy in classifying coordination into predefined levels (e.g., normal vs. impaired) using metrics like F1-score.
-4. **Dynamic Coordination Ratio (DCR)**: Measures synchronization of limb movements during take-off and flight phases by analyzing temporal joint correlations.
+1. **Dynamic Coordination Ratio (DCR)**: Measures synchronization of limb movements during take-off and flight phases by analyzing temporal joint correlations.
 
 #### New Metrics:
 
