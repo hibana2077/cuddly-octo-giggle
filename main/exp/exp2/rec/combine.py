@@ -1,7 +1,7 @@
 import pandas as pd
 
 if __name__ == '__main__':
-    master_dir = './jump/succ/'
+    master_dir = './walk/normal/'
 
     # Load the data
     smoothness_data = pd.read_csv(f'{master_dir}smoothness_values.csv')
