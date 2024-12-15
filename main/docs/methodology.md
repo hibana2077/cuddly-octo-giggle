@@ -39,37 +39,34 @@ Coordination is assessed via the standing long jump test, where children perform
 
 ### Experiment 2: Coordination Assessment via Long Jump
 
-**Objective:** Evaluate the effectiveness of the system in detecting coordination anomalies.
+**Objective:** Develop and validate innovative metrics to evaluate coordination and stability in standing long jump sequences among young children, with a focus on motion interpretability and practical applications in physical education and developmental studies.
 
 **Method:**
 
-- Use open-source datasets such as NTU RGB+D Dataset to train models for analyzing standing long jump sequences.
-- Validate model predictions against simulated cases of normal and impaired coordination.
+- Use self-generated datasets comprising "normal" and "abnormal" standing long jump videos from young children to simulate real-world scenarios.
+- Extract skeleton data using state-of-the-art pose estimation tools (e.g., Mediapipe, OpenPose).
+- Apply proposed metrics to assess coordination and stability in both normal and abnormal cases.
+- Supplement analysis by comparing results to existing motion analysis methods.
 
 **Metrics:**
 
-- Jump distance prediction accuracy.
-- Take-off and landing balance analysis.
-- Classification precision for coordination levels.
-- **Dynamic Coordination Ratio (DCR):** Measures the synchronization of limb movements during take-off and flight phases by analyzing temporal joint correlations.
+#### Existing Metrics:
 
-### Experiment 3: Longitudinal Development Analysis
+1. **Jump Distance Prediction Accuracy**: Measures the precision of predicted jump distances compared to actual distances, using mean absolute error (MAE) as a key indicator.
+2. **Take-off and Landing Balance Analysis**: Analyzes the stability of take-off and landing phases by evaluating center-of-mass trajectories and limb alignment.
+3. **Classification Precision for Coordination Levels**: Assesses the system's accuracy in classifying coordination into predefined levels (e.g., normal vs. impaired) using metrics like F1-score.
+4. **Dynamic Coordination Ratio (DCR)**: Measures synchronization of limb movements during take-off and flight phases by analyzing temporal joint correlations.
 
-**Objective:** Examine the feasibility of using the CV system for long-term developmental tracking.
+#### New Metrics:
 
-**Method:**
+1. **Limb Movement Trajectory Smoothness**:
+   - **Characteristic:** Quantifies the smoothness of limb movements by evaluating jerk (rate of change of acceleration) and trajectory variance. Smoother trajectories indicate better coordination.
 
-- Simulate longitudinal data by segmenting existing datasets into temporal sequences.
-- Use temporal modeling (e.g., recurrent neural networks) to analyze developmental trends.
-- Validate model predictions against artificially generated developmental trajectories.
+2. **Landing Stability Index (LSI)**:
+   - **Characteristic:** Evaluates landing stability by analyzing deviations in the center-of-mass and joint positions upon landing, along with oscillations in postural stability. High values indicate poor stability.
 
-**Metrics:**
-
-- Consistency of CV-derived metrics over time.
-- Predictive accuracy for identifying developmental delays.
-- Model robustness in simulated long-term scenarios.
-- **Consistency over Time (CoT):** Evaluates whether CV-derived metrics remain stable across multiple trials over time.
-- **Pose Reconstruction Error (PRE):** Assesses the accuracy of the 2D pose estimation by comparing reconstructed 3D poses to ground truth annotations.
+**Focus on Young Children:**
+This study exclusively targets young children to explore the developmental aspects of coordination and stability. The metrics are tailored to detect subtle differences in motor skill development, providing actionable insights for educators and caregivers. Emphasis is placed on ethical data collection and practical applications within educational and developmental settings.
 
 ## Implementation Framework
 

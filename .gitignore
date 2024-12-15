@@ -169,3 +169,9 @@ main/exp/exp1/test.mp4
 main/exp/exp1/new_test.mp4
 main/exp/exp1/yolo11x-pose.pt
 main/exp/exp1/test_video.mp4
+main/docs/test.md
+main/docs/Scaled Dot Product Attention.pdf
+main/exp/exp2/abnormal_walk.mp4
+main/exp/exp2/fail_jump.mp4
+main/exp/exp2/normal_walk_clip.mp4
+main/exp/exp2/succ_jump.mp4
