@@ -55,6 +55,8 @@ def plot_dcr_and_jad(data):
 if __name__ == '__main__':
     # Load the data
     smoothness_data = pd.read_csv('./walk/normal/smoothness_values.csv')
+    # smoothness_data drop first row
+    smoothness_data = smoothness_data.drop(0)
     dcr_data = pd.read_csv('./walk/normal/dcr_values.csv')
     jad_data = pd.read_csv('./walk/normal/jad_values.csv')
 
