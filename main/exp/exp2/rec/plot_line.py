@@ -54,11 +54,11 @@ def plot_dcr_and_jad(data):
 
 if __name__ == '__main__':
     # Load the data
-    smoothness_data = pd.read_csv('./jump/succ/smoothness_values_succ.csv')
+    smoothness_data = pd.read_csv('./jump/fail/smoothness_values.csv')
     # smoothness_data drop first row
     smoothness_data = smoothness_data.drop(0)
-    dcr_data = pd.read_csv('./walk/normal/dcr_values.csv')
-    jad_data = pd.read_csv('./walk/normal/jad_values.csv')
+    dcr_data = pd.read_csv('./jump/fail/dcr_values.csv')
+    jad_data = pd.read_csv('./jump/fail/jad_values.csv')
 
     # Merge DCR and JAD data on Frame
     dcr_jad_data = pd.merge(dcr_data, jad_data, on='Frame', how='inner')
